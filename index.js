@@ -1,8 +1,8 @@
 import { extension_settings } from "../../../extensions.js";
 import { saveSettingsDebounced } from "../../../../script.js";
 
-// ⚠️ Must match your folder name exactly
-const extensionName = "story-scribe";
+// ⚠️ This MUST match your GitHub repo name exactly (case-sensitive!)
+const extensionName = "Summary";
 const extensionFolderPath = `scripts/extensions/third-party/${extensionName}`;
 
 jQuery(async () => {
