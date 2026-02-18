@@ -24,6 +24,16 @@ function onEnabledChange(event) {
     console.log(`[${extensionName}] Enabled: ${value}`);
 }
 
+function onSummarizeNow() {
+    const isEnabled = extension_settings[extensionName].enabled;
+    if (!isEnabled) {
+        toastr.warning("Story Scribe is disabled. Enable it first!", "📖 Story Scribe");
+        return;
+    }
+    toastr.info("Summarize Now clicked! Summarization coming in the next stage.", "📖 Story Scribe");
+    console.log(`[${extensionName}] Summarize Now button clicked`);
+}
+
 jQuery(async () => {
     console.log(`[${extensionName}] Loading...`);
 
@@ -34,6 +44,17 @@ jQuery(async () => {
         // Bind checkbox
         $("#story_scribe_enabled").on("input", onEnabledChange);
 
+        // Bind button
+        $("#story_scribe_summarize_now").on("click", onSummarizeNow);
+
+        // Load saved settings
+        loadSettings();
+
+        console.log(`[${extensionName}] ✅ Loaded successfully`);
+    } catch (error) {
+        console.error(`[${extensionName}] ❌ Failed to load:`, error);
+    }
+});
         // Load saved settings
         loadSettings();
 
