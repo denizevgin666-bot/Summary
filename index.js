@@ -55,6 +55,27 @@ jQuery(async () => {
         console.error(`[${extensionName}] ❌ Failed to load:`, error);
     }
 });
+jQuery(async () => {
+    console.log(`[${extensionName}] Loading...`);
+
+    try {
+        const settingsHtml = await $.get(`${extensionFolderPath}/example.html`);
+        $("#extensions_settings2").append(settingsHtml);
+
+        // Bind checkbox
+        $("#story_scribe_enabled").on("input", onEnabledChange);
+
+        // Bind button
+        $("#story_scribe_summarize_now").on("click", onSummarizeNow);
+
+        // Load saved settings
+        loadSettings();
+
+        console.log(`[${extensionName}] ✅ Loaded successfully`);
+    } catch (error) {
+        console.error(`[${extensionName}] ❌ Failed to load:`, error);
+    }
+});
         // Load saved settings
         loadSettings();
 
